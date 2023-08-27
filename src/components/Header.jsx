@@ -25,10 +25,18 @@ const Header = (props) => {
         </div>
         <div className="flex gap-x-3">
           <div>
-            <input type="text" placeholder="search" />
+            <input
+              className="border rounded-md py-1 px-2"
+              type="text"
+              placeholder="search"
+            />
           </div>
           <button onClick={openProfileSidebar}>
-            {!session ? <UserCircleIcon /> : <Image alt="user" src={""} />}
+            {!session ? (
+              <UserCircleIcon className="w-7 h-7" />
+            ) : (
+              <Image alt="user" src={""} />
+            )}
           </button>
         </div>
       </header>
