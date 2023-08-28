@@ -38,14 +38,17 @@ const Header = (props) => {
               placeholder="search"
             />
           </div>
-          <button onClick={openProfileSidebar}>
-            {!session ? (
+          <button
+            className="flex items-center justify-center w-8 h-8"
+            onClick={openProfileSidebar}
+          >
+            {!session?.user?.image ? (
               <UserCircleIcon className="w-7 h-7" />
             ) : (
               <Image
-                className="w-7 h-7 rounded-full"
-                width={28}
-                height={28}
+                className="w-8 h-8 rounded-full"
+                width={32}
+                height={32}
                 alt={session.user.name}
                 src={session.user.image}
               />

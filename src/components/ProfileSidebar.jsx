@@ -1,9 +1,10 @@
-import { animated, useSpring, useTransition } from "@react-spring/web";
+import { animated, useSpring } from "@react-spring/web";
 import { useEffect, useRef } from "react";
 import XCircleIcon from "./icons/XCircleIcon";
 import UserCircleIcon from "./icons/UserCircleIcon";
 import Link from "next/link";
 import Image from "next/image";
+import { signOut } from "next-auth/react";
 
 const ProfileSidebar = (props) => {
   const { isProfileSidebarOpen, dismissProfileSidebar, session } = props;
@@ -70,7 +71,7 @@ const ProfileSidebar = (props) => {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="flex w-full mb-3">
               <Link
                 className="underline"
                 href={`/subscribe`}
@@ -78,6 +79,17 @@ const ProfileSidebar = (props) => {
               >
                 subscribe
               </Link>
+            </div>
+            <div className="flex w-full mb-3">
+              <button
+                className="underline"
+                onClick={() => {
+                  dismissProfileSidebar();
+                  signOut();
+                }}
+              >
+                sign out
+              </button>
             </div>
           </div>
         ) : (
