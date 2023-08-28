@@ -3,9 +3,10 @@ import { useEffect, useRef } from "react";
 import XCircleIcon from "./icons/XCircleIcon";
 import UserCircleIcon from "./icons/UserCircleIcon";
 import Link from "next/link";
+import Image from "next/image";
 
 const ProfileSidebar = (props) => {
-  const { isProfileSidebarOpen, dismissProfileSidebar } = props;
+  const { isProfileSidebarOpen, dismissProfileSidebar, session } = props;
 
   const sidebarRef = useRef(null);
   const animation = useSpring({
@@ -23,8 +24,6 @@ const ProfileSidebar = (props) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  const session = null;
 
   return (
     <animated.div
@@ -48,7 +47,39 @@ const ProfileSidebar = (props) => {
       </div>
       <div className="flex flex-col h-full justify-between">
         {session ? (
-          <div></div>
+          <div className="flex flex-col">
+            <div className="flex items-center gap-x-4 mb-3">
+              <Image
+                className="w-10 h-10 rounded-full"
+                width={40}
+                height={40}
+                alt={session.user.name}
+                src={session.user.image}
+              />
+              <div>
+                <div>Hi, {session.user.name}</div>
+                <div>
+                  click here to edit your{" "}
+                  <Link
+                    className="underline"
+                    href={`/profile`}
+                    onClick={dismissProfileSidebar}
+                  >
+                    profile
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div>
+              <Link
+                className="underline"
+                href={`/subscribe`}
+                onClick={dismissProfileSidebar}
+              >
+                subscribe
+              </Link>
+            </div>
+          </div>
         ) : (
           <div className="flex flex-col">
             <div className="flex items-center gap-x-4 mb-3">
@@ -57,7 +88,11 @@ const ProfileSidebar = (props) => {
                 <div>Hello!!!</div>
                 <div>
                   Please{" "}
-                  <Link className="underline" href={`/login`}>
+                  <Link
+                    className="underline"
+                    href={`/login`}
+                    onClick={dismissProfileSidebar}
+                  >
                     login
                   </Link>{" "}
                   to continue
@@ -65,7 +100,11 @@ const ProfileSidebar = (props) => {
               </div>
             </div>
             <div>
-              <Link className="underline" href={`/subscribe`}>
+              <Link
+                className="underline"
+                href={`/subscribe`}
+                onClick={dismissProfileSidebar}
+              >
                 subscribe
               </Link>
             </div>

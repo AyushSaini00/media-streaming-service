@@ -5,9 +5,16 @@ import Link from "next/link";
 import UserCircleIcon from "./icons/UserCircleIcon";
 import useSidebar from "../hooks/useSidebar";
 import ProfileSidebar from "./ProfileSidebar";
+import { useSession } from "next-auth/react";
 
 const Header = (props) => {
-  const { session } = props;
+  const { data: session } = useSession({
+    // required: true,
+    // onUnauthenticated() {
+    //   redirect("/api/auth/signin?callbackUrl=/client");
+    // },
+  });
+
   const {
     isSidebarOpen: isProfileSidebarOpen,
     openSidebar: openProfileSidebar,
@@ -35,7 +42,13 @@ const Header = (props) => {
             {!session ? (
               <UserCircleIcon className="w-7 h-7" />
             ) : (
-              <Image alt="user" src={""} />
+              <Image
+                className="w-7 h-7 rounded-full"
+                width={28}
+                height={28}
+                alt={session.user.name}
+                src={session.user.image}
+              />
             )}
           </button>
         </div>
@@ -44,6 +57,7 @@ const Header = (props) => {
         {...{
           isProfileSidebarOpen,
           dismissProfileSidebar,
+          session,
         }}
       />
     </>
