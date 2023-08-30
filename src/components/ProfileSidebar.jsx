@@ -50,13 +50,21 @@ const ProfileSidebar = (props) => {
         {session ? (
           <div className="flex flex-col">
             <div className="flex items-center gap-x-4 mb-3">
-              <Image
-                className="w-10 h-10 rounded-full"
-                width={40}
-                height={40}
-                alt={session.user.name}
-                src={session.user.image}
-              />
+              {session?.user?.image ? (
+                <div className="w-10 h-10 relative">
+                  <Image
+                    className="rounded-full"
+                    fill={true}
+                    alt={session.user?.name || "profile"}
+                    src={session.user.image}
+                  />
+                </div>
+              ) : (
+                <div className="w-10 h-10 relative">
+                  <UserCircleIcon className=" w-10 h-10" />
+                </div>
+              )}
+
               <div>
                 <div>Hi, {session.user.name}</div>
                 <div>

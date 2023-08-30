@@ -11,12 +11,12 @@ const Page = (props) => {
 
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center max-w-xl w-full">
         <div className="flex w-full text-xl mb-4 gap-x-2">
           <Link href={`/`}>←</Link>
           <span>edit your profile</span>
         </div>
-        <div className="flex flex-col gap-y-5 p-4 border rounded-md">
+        <div className="flex w-full flex-col gap-y-6 p-4 border rounded-md">
           <form
             className="flex flex-col gap-y-5"
             onSubmit={(evt) => {
@@ -46,12 +46,14 @@ const Page = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button
-              className="text-sm border border-gray-400 rounded-md py-1 px-2"
-              type="submit"
-            >
-              save
-            </button>
+            <div className="flex justify-start">
+              <button
+                className="text-base border border-gray-600 bg-gray-600 text-white rounded-md py-1 px-2"
+                type="submit"
+              >
+                update
+              </button>
+            </div>
           </form>
         </div>
       </div>

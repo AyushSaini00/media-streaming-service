@@ -8,9 +8,11 @@ const Page = (props) => {
 
   return (
     <div className="flex items-center justify-center h-full">
-      <div className="flex flex-col items-center">
-        <div className="text-xl mb-4">login to continue</div>
-        <div className="flex flex-col gap-y-5 p-4 border rounded-md">
+      <div className="flex flex-col items-center max-w-xl w-full">
+        <div className="flex w-full items-center justify-center text-xl mb-4">
+          login to continue
+        </div>
+        <div className="flex w-full flex-col gap-y-6 p-4 border rounded-md">
           <form
             className="flex flex-col gap-y-5"
             onSubmit={(evt) => {
@@ -41,17 +43,19 @@ const Page = (props) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <button
-              className="text-sm border border-gray-400 rounded-md py-1 px-2"
-              type="submit"
-            >
-              login with credentials
-            </button>
+            <div className="flex justify-center">
+              <button
+                className="text-base border border-gray-600 bg-gray-600 text-white rounded-md py-1 px-2"
+                type="submit"
+              >
+                login with credentials
+              </button>
+            </div>
           </form>
           <div className="text-sm flex w-full justify-center">
             or, you can login with either{" "}
           </div>
-          <div className="flex gap-x-3">
+          <div className="flex gap-x-3 justify-center">
             <button
               onClick={() => {
                 signIn("google");

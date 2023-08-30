@@ -15,6 +15,8 @@ const Header = (props) => {
     // },
   });
 
+  console.log(session);
+
   const {
     isSidebarOpen: isProfileSidebarOpen,
     openSidebar: openProfileSidebar,
@@ -39,7 +41,7 @@ const Header = (props) => {
             />
           </div>
           <button
-            className="flex items-center justify-center w-8 h-8"
+            className="flex items-center justify-center w-8 h-8 relative"
             onClick={openProfileSidebar}
           >
             {!session?.user?.image ? (
@@ -47,8 +49,7 @@ const Header = (props) => {
             ) : (
               <Image
                 className="w-8 h-8 rounded-full"
-                width={32}
-                height={32}
+                fill={true}
                 alt={session.user.name}
                 src={session.user.image}
               />

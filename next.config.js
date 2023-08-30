@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         // pathname: "a/**",
       },
+      {
+        protocol: "https",
+        hostname: "scontent.fblr1-4.fna.fbcdn.net",
+        port: "",
+        // pathname: "a/**",
+      },
     ],
   },
 };
